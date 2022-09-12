@@ -1,6 +1,7 @@
 type FontProps = {
   fontSize: number;
   fontFamily: string;
+  color: string;
   fontWeight?:
     | "normal"
     | "bold"
@@ -13,7 +14,6 @@ type FontProps = {
     | "700"
     | "800"
     | "900";
-  color?: string;
 };
 
 export default FontProps;
