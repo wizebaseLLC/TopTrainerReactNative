@@ -1,18 +1,15 @@
-import {
-  createNativeStackNavigator,
-  NativeStackScreenProps,
-} from "@react-navigation/native-stack";
-import { FunctionComponent } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Platform } from "react-native";
 import { AppColors } from "../../../constants";
-import { Home } from "../../features/home/home";
+import { Fitness } from "../../features/fitness/fitness";
 
-export type HomeStackParamList = {
-  Home: undefined;
+export type FitnessStackParamList = {
+  Fitness: undefined;
 };
 
-const Stack = createNativeStackNavigator<HomeStackParamList>();
-export const HomeScreen = () => {
+const Stack = createNativeStackNavigator<FitnessStackParamList>();
+
+export const FitnessScreen = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -27,8 +24,8 @@ export const HomeScreen = () => {
       }}
     >
       <Stack.Screen
-        name="Home"
-        component={Home as FunctionComponent}
+        name="Fitness"
+        component={Fitness}
         options={{
           headerSearchBarOptions: {
             onChangeText: (event) => console.log(event.nativeEvent.text),

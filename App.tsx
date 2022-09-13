@@ -10,9 +10,18 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { HomeScreen } from "./views/screens/home/homeScreen";
 import { BlurView } from "@react-native-community/blur";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
+import { FitnessScreen } from "./views/screens/fitness/fitnessScreen";
 
-const Tab = createBottomTabNavigator();
+export type TabStackParamList = {
+  HomeTab: undefined;
+  FitnessTab: undefined;
+  TrainTab: undefined;
+  DineTab: undefined;
+  ProfileTab: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabStackParamList>();
 
 const MyTheme: Theme = {
   ...DarkTheme,
@@ -36,51 +45,63 @@ export default function App() {
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
           screenOptions={{
-            tabBarStyle: { position: "absolute" },
-            tabBarBackground: () => (
-              <BlurView
-                blurType="ultraThinMaterialDark"
-                style={StyleSheet.absoluteFill}
-              />
-            ),
+            tabBarStyle: {
+              position: Platform.OS === "ios" ? "absolute" : "relative",
+            },
+            tabBarActiveBackgroundColor:
+              Platform.OS !== "ios" ? "black" : undefined,
+            tabBarInactiveBackgroundColor:
+              Platform.OS !== "ios" ? "black" : undefined,
+            tabBarBackground: () =>
+              Platform.OS === "ios" && (
+                <BlurView
+                  blurType="ultraThinMaterialDark"
+                  style={StyleSheet.absoluteFill}
+                />
+              ),
           }}
         >
           <Tab.Screen
-            name="Home"
+            name="HomeTab"
             component={HomeScreen}
             options={{
+              title: "Home",
               headerShown: false,
               tabBarIcon: (props) => <Ionicons name="home" {...props} />,
             }}
           />
           <Tab.Screen
-            name="Discover"
-            component={HomeScreen}
+            name="FitnessTab"
+            component={FitnessScreen}
             options={{
+              title: "Fitness",
               headerShown: false,
-              tabBarIcon: (props) => <Ionicons name="search" {...props} />,
+              tabBarIcon: (props) => <Ionicons name="fitness" {...props} />,
             }}
           />
           <Tab.Screen
-            name="Train"
+            name="TrainTab"
             component={HomeScreen}
             options={{
+              title: "Train",
               headerShown: false,
               tabBarIcon: (props) => <Ionicons name="barbell" {...props} />,
             }}
           />
           <Tab.Screen
-            name="Dine"
+            name="DineTab"
             component={HomeScreen}
             options={{
+              title: "Dine",
               headerShown: false,
               tabBarIcon: (props) => <Ionicons name="fast-food" {...props} />,
             }}
           />
           <Tab.Screen
-            name="Profile"
+            name="ProfileTab"
             component={HomeScreen}
             options={{
+              title: "Profile",
               headerShown: false,
               tabBarIcon: (props) => <Ionicons name="person" {...props} />,
             }}
