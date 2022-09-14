@@ -1,15 +1,27 @@
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
+import { useEffect } from "react";
 import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { AppColors, AppFonts, AppSpacing } from "../../../constants";
-import { FitnessStackParamList } from "../../screens/fitness/fitnessScreen";
+import { DiscoverStackParamList } from "../../screens/discover/discoverScreen";
 
-type Props = NativeStackScreenProps<FitnessStackParamList, "Fitness">;
+type Props = NativeStackScreenProps<DiscoverStackParamList, "Discover">;
 
-export const Fitness = ({ navigation }: Props) => {
+export const Discover = ({ navigation }: Props) => {
   const paddingBottom = useBottomTabBarHeight();
-
+  useEffect(() => {
+    navigation.setOptions({
+      headerSearchBarOptions: {
+        onChangeText: (event) => console.log(event.nativeEvent.text),
+        textColor: AppColors.WHITE_COLOR,
+        headerIconColor: AppColors.WHITE_COLOR,
+        shouldShowHintSearchIcon: false,
+        hintTextColor: AppColors.WHITE_COLOR,
+        placeholder: "Search",
+      },
+    });
+  }, [navigation]);
   return (
     <LinearGradient
       // Background Linear Gradient

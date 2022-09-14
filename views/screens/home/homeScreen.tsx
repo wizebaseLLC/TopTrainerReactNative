@@ -30,14 +30,6 @@ export const HomeScreen = () => {
         name="Home"
         component={Home as FunctionComponent}
         options={{
-          headerSearchBarOptions: {
-            onChangeText: (event) => console.log(event.nativeEvent.text),
-            textColor: AppColors.WHITE_COLOR,
-            headerIconColor: AppColors.WHITE_COLOR,
-            shouldShowHintSearchIcon: false,
-            hintTextColor: AppColors.WHITE_COLOR,
-            placeholder: "Search",
-          },
           headerLargeTitle: true,
           headerTransparent: Platform.OS === "ios",
           headerBlurEffect: "systemUltraThinMaterialDark",

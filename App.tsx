@@ -11,11 +11,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { HomeScreen } from "./views/screens/home/homeScreen";
 import { BlurView } from "@react-native-community/blur";
 import { Platform, StyleSheet } from "react-native";
-import { FitnessScreen } from "./views/screens/fitness/fitnessScreen";
+import { FitnessScreen } from "./views/screens/discover/discoverScreen";
 
 export type TabStackParamList = {
   HomeTab: undefined;
-  FitnessTab: undefined;
+  DiscoverTab: undefined;
   TrainTab: undefined;
   DineTab: undefined;
   ProfileTab: undefined;
@@ -71,12 +71,12 @@ export default function App() {
             }}
           />
           <Tab.Screen
-            name="FitnessTab"
+            name="DiscoverTab"
             component={FitnessScreen}
             options={{
-              title: "Fitness",
+              title: "Discover",
               headerShown: false,
-              tabBarIcon: (props) => <Ionicons name="fitness" {...props} />,
+              tabBarIcon: (props) => <Ionicons name="search" {...props} />,
             }}
           />
           <Tab.Screen

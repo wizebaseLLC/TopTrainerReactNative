@@ -1,12 +1,11 @@
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
-import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
-import FastImage from "react-native-fast-image";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { AppColors, AppFonts, AppSpacing } from "../../../constants";
 import { HomeStackParamList } from "../../screens/home/homeScreen";
-import { Shadow } from "react-native-shadow-2";
-import { FeatureCard } from "../../../components/";
+import { FeaturedHeader } from "../../../components/";
+import FeaturedTrainerList from "./components/featuredTrainerList";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "Home">;
 const { createSpacing } = AppSpacing;
@@ -26,12 +25,15 @@ export const Home = ({ navigation }: Props) => {
         showsHorizontalScrollIndicator={false}
       >
         <View style={{ marginTop: createSpacing(2) }}>
-          <Text style={styles.headerText}>Featured Top Trainers</Text>
-          <FeatureCard
-            onPress={() => console.log("press")}
-            uri="https://www.wwe.com/f/styles/wwe_large/public/gallery/thumb/2015/03/05_Diary_03252015rf_357.jpg"
-            text="Top Trainer Fitness Program"
+          <FeaturedHeader
+            title="Featured Top Trainers"
+            onPress={() => {
+              console.log("press");
+            }}
           />
+          <View style={styles.cardContainer}>
+            <FeaturedTrainerList />
+          </View>
         </View>
       </ScrollView>
     </LinearGradient>
@@ -41,10 +43,8 @@ export const Home = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: createSpacing(2),
   },
-  headerText: {
-    ...AppFonts.TITLE_2,
-    paddingBottom: createSpacing(2),
+  cardContainer: {
+    paddingLeft: createSpacing(2),
   },
 });
