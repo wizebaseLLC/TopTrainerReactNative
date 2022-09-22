@@ -12,6 +12,7 @@ import { HomeScreen } from "./views/screens/home/homeScreen";
 import { BlurView } from "@react-native-community/blur";
 import { Platform, StyleSheet } from "react-native";
 import { FitnessScreen } from "./views/screens/discover/discoverScreen";
+import { AppColors } from "./constants";
 
 export type TabStackParamList = {
   HomeTab: undefined;
@@ -28,6 +29,7 @@ const MyTheme: Theme = {
   colors: {
     ...DarkTheme.colors,
     card: "black",
+    primary: AppColors.COMPLIMENTARY_COLOR,
   },
 };
 

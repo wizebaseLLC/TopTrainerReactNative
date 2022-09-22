@@ -2,10 +2,9 @@ import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 import { ScrollView, StyleSheet, View } from "react-native";
-import { AppColors, AppFonts, AppSpacing } from "../../../constants";
+import { AppColors, AppSpacing } from "../../../constants";
 import { HomeStackParamList } from "../../screens/home/homeScreen";
-import { FeaturedHeader } from "../../../components/";
-import FeaturedTrainerList from "./components/featuredTrainerList";
+import FeaturedTopTrainersView from "./components/featuredTopTrainersView";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "Home">;
 const { createSpacing } = AppSpacing;
@@ -24,16 +23,8 @@ export const Home = ({ navigation }: Props) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={{ marginTop: createSpacing(2) }}>
-          <FeaturedHeader
-            title="Featured Top Trainers"
-            onPress={() => {
-              console.log("press");
-            }}
-          />
-          <View style={styles.cardContainer}>
-            <FeaturedTrainerList />
-          </View>
+        <View style={styles.featuredTopTrainerStyle}>
+          <FeaturedTopTrainersView />
         </View>
       </ScrollView>
     </LinearGradient>
@@ -44,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  cardContainer: {
-    paddingLeft: createSpacing(2),
+  featuredTopTrainerStyle: {
+    marginTop: createSpacing(2),
   },
 });

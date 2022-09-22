@@ -10,8 +10,9 @@ const FeaturedTrainerList = () => (
     renderItem={({ item }) => (
       <View
         style={{
-          paddingRight: AppSpacing.createSpacing(2),
-          paddingBottom: AppSpacing.createSpacing(),
+          paddingLeft: AppSpacing.createSpacing(2),
+          paddingRight: AppSpacing.createSpacing(),
+          paddingBottom: AppSpacing.createSpacing(5),
         }}
       >
         <FeatureCard

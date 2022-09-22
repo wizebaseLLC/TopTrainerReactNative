@@ -1,7 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, View } from "react-native";
 import FastImage from "react-native-fast-image";
-import { AppFonts, AppSpacing } from "../constants";
+import { AppColors, AppFonts, AppShadows, AppSpacing } from "../constants";
 import PlatformButton from "./platformButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -46,7 +46,7 @@ const FeatureCardView = ({ uri, text, rating }: FeatureCardProps) => (
       <Text style={styles.text}>{text}</Text>
       {rating && (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <Ionicons name="star" size={20} color="yellow" />
+          <Ionicons name="star" size={20} style={styles.icon} />
           <Text style={styles.ratingText}>{rating}</Text>
         </View>
       )}
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  icon: {
+    color: AppColors.PRIMARY_COLOR,
   },
   row: {
     flexDirection: "row",
@@ -93,18 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     padding: AppSpacing.createSpacing(2),
   },
-  shadowProp: {
-    borderRadius,
-    shadowColor: "black",
-    shadowOffset: {
-      width: 4,
-      height: 8,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    elevation: 10,
-    backgroundColor: "transparent",
-  },
+  shadowProp: AppShadows.HEAVY_SHADOW,
 });
 
 export default FeatureCard;

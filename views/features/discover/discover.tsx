@@ -1,7 +1,7 @@
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { AppColors, AppFonts, AppSpacing } from "../../../constants";
 import { DiscoverStackParamList } from "../../screens/discover/discoverScreen";
@@ -10,7 +10,7 @@ type Props = NativeStackScreenProps<DiscoverStackParamList, "Discover">;
 
 export const Discover = ({ navigation }: Props) => {
   const paddingBottom = useBottomTabBarHeight();
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerSearchBarOptions: {
         onChangeText: (event) => console.log(event.nativeEvent.text),
